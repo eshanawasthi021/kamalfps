@@ -213,7 +213,7 @@ opacity:.6;
 <a href="#">Home</a>
 <a href="#videos">Videos</a>
 <a href="#stats">Stats</a>
-<a href="#setup">Setup</a>
+<a consthref="#setup">Setup</a>
 <a href="#subscribe">Subscribe</a>
 </nav></header><section class="hero"><h1>DOMINATE THE <span>FPS</span></h1><p>Elite aim. Insane reflexes. Legendary clutch plays.</p><a class="btn" href="https://youtube.com/@kamalfps" target="_blank">SUBSCRIBE</a>
 
@@ -251,11 +251,12 @@ LIVE SUBSCRIBERS: <span id="subCount">Loading...</span>
 // Live YouTube Subscriber Counter for @kamalfps
 // Uses free livecounts API
 
-const channelId = "U8SvZh1bHPje55ap"; // replace with real channel ID if known
+ <script>
+const handle = "kamalfps";
 
 async function updateSubs(){
   try{
-    const res = await fetch("https://api.livecounts.io/youtube-live-subscriber-count/stats/" + channelId);
+    const res = await fetch(`https://api.livecounts.io/youtube-live-subscriber-count/handle/${handle}`);
     const data = await res.json();
 
     const count = data.est_sub;
@@ -265,11 +266,12 @@ async function updateSubs(){
       el.innerText = count.toLocaleString();
     }
   }catch(e){
-    console.log("Subscriber counter error",e);
+    console.log("Subscriber counter error", e);
   }
 }
 
 setInterval(updateSubs,5000);
 updateSubs();
+</script>
 </script></body>
 </html>
