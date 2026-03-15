@@ -1,137 +1,148 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@kamalfps Gaming</title><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"><style>
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron',sans-serif}
+<title>KamalFPS Gaming</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
 
 body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:radial-gradient(circle at top,#1a1a2e,#000000);
+margin:0;
+font-family:'Orbitron',sans-serif;
+background:#0a0a0f;
 color:white;
-overflow:hidden;
 }
 
-/* glowing background */
-body::before{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-background:linear-gradient(45deg,#00f0ff,#8a2be2,#ff00c8);
-filter:blur(180px);
-animation:moveGlow 10s infinite alternate;
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:#111;
 }
 
-@keyframes moveGlow{
-0%{transform:translate(-150px,-150px)}
-100%{transform:translate(150px,150px)}
+.logo{
+font-size:24px;
+color:#ff003c;
 }
 
-.phone{
-position:relative;
-width:350px;
-height:680px;
-border-radius:45px;
-border:10px solid #111;
-background:linear-gradient(180deg,#eef2ff,#dfe6ff);
-padding:45px 25px;
-text-align:center;
-box-shadow:0 0 40px rgba(0,0,0,0.6);
-}
-
-.controller{
-width:190px;
-margin:auto;
-display:block;
-margin-bottom:25px;
-filter:drop-shadow(0 10px 20px rgba(0,0,0,0.4));
-animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-100%{transform:translateY(0)}
-}
-
-h1{
-font-size:42px;
-line-height:1.2;
-color:#3d1fa8;
-margin-bottom:15px;
-}
-
-.tagline{
-font-size:15px;
-color:#444;
-margin-bottom:30px;
-}
-
-.subscribe{
-display:inline-block;
-padding:14px 28px;
-background:linear-gradient(90deg,#ff0000,#ff4d4d);
-border-radius:30px;
+nav a{
+margin-left:20px;
 text-decoration:none;
 color:white;
-font-size:16px;
-letter-spacing:1px;
-box-shadow:0 0 20px rgba(255,0,0,0.6);
-transition:0.3s;
 }
 
-.subscribe:hover{
-transform:scale(1.08);
-box-shadow:0 0 30px rgba(255,0,0,0.9);
+.hero{
+text-align:center;
+padding:120px 20px;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 }
 
-.stats{
-margin-top:35px;
-display:flex;
-justify-content:space-around;
-font-size:13px;
-color:#333;
+.hero h1{
+font-size:60px;
+margin-bottom:10px;
 }
 
-.stat strong{
-display:block;
-font-size:18px;
-color:#000;
+.hero p{
+opacity:0.8;
 }
 
-.channel{
-position:absolute;
-bottom:18px;
-left:0;
-right:0;
-font-size:12px;
-color:#333;
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 28px;
+background:#ff003c;
+color:white;
+text-decoration:none;
+border-radius:30px;
 }
 
-</style></head><body><div class="phone"><img class="controller" src="https://cdn-icons-png.flaticon.com/512/686/686589.png"><h1>
-LEVEL UP<br>
-YOUR REALITY
-</h1><p class="tagline">
-Epic FPS gameplay, clutch moments, and insane highlights.
-</p><a class="subscribe" href="https://youtube.com/@kamalfps" target="_blank">
-SUBSCRIBE
-</a><div class="stats">
-<div class="stat">
-<strong>FPS</strong>
-Gameplay
-</div><div class="stat">
-<strong>Clutch</strong>
-Moments
-</div><div class="stat">
-<strong>Pro</strong>
-Skills
+.section{
+padding:80px 10%;
+text-align:center;
+}
+
+.videos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+margin-top:40px;
+}
+
+iframe{
+width:100%;
+height:200px;
+border:none;
+border-radius:10px;
+}
+
+footer{
+background:#111;
+text-align:center;
+padding:30px;
+margin-top:60px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">@kamalfps</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#videos">Videos</a>
+<a href="#subscribe">Subscribe</a>
+</nav>
+</header>
+
+<section class="hero">
+
+<h1>LEVEL UP YOUR GAME</h1>
+
+<p>Epic FPS gameplay, insane clutch moments and highlights.</p>
+
+<a class="btn" href="https://youtube.com/@kamalfps" target="_blank">SUBSCRIBE</a>
+
+</section>
+
+<section class="section" id="videos">
+
+<h2>Latest Videos</h2>
+
+<div class="videos">
+
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+
 </div>
-</div><div class="channel">
-YouTube Channel • @kamalfps
-</div></div></body>
+
+</section>
+
+<section class="section" id="subscribe">
+
+<h2>Join The Squad</h2>
+
+<p>Subscribe for more epic gaming content.</p>
+
+<a class="btn" href="https://youtube.com/@kamalfps">Subscribe Now</a>
+
+</section>
+
+<footer>
+
+<p>© 2026 KamalFPS Gaming</p>
+
+</footer>
+
+</body>
 </html>
