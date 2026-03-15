@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KamalFPS Gaming</title>
+<title>KamalFPS</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
@@ -20,17 +20,16 @@ color:white;
 overflow-x:hidden;
 }
 
-/* RGB glow following mouse */
+/* mouse particle canvas */
 
-#glow{
+#trailCanvas{
 position:fixed;
-width:600px;
-height:600px;
-background:radial-gradient(circle,#ff003c,#7b2cff,#00e5ff);
-filter:blur(180px);
+top:0;
+left:0;
+width:100%;
+height:100%;
 pointer-events:none;
 z-index:-1;
-opacity:.4;
 }
 
 /* header */
@@ -38,21 +37,20 @@ opacity:.4;
 header{
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:25px 8%;
-background:#0c0c14;
+padding:20px 8%;
+background:#0e0e16;
 }
 
 .logo{
-font-size:26px;
 color:#ff003c;
+font-size:26px;
 font-weight:bold;
 }
 
 nav a{
-margin-left:25px;
-text-decoration:none;
+margin-left:20px;
 color:white;
+text-decoration:none;
 opacity:.8;
 }
 
@@ -60,47 +58,46 @@ opacity:.8;
 
 .hero{
 text-align:center;
-padding:140px 20px;
+padding:120px 20px;
 }
 
 .hero h1{
-font-size:64px;
+font-size:60px;
 margin-bottom:20px;
 }
 
-.hero span{
-color:#00e5ff;
+.hero span{color:#00e5ff}
+
+/* 3D controller */
+
+.controller{
+width:220px;
+height:220px;
+margin:50px auto;
+transform-style:preserve-3d;
+animation:spin 12s linear infinite;
 }
 
-.hero p{
-opacity:.7;
-margin-bottom:30px;
+.controller img{
+width:100%;
 }
 
-.btn{
-padding:16px 36px;
-border-radius:40px;
-background:#ff003c;
-color:white;
-text-decoration:none;
-display:inline-block;
+@keyframes spin{
+0%{transform:rotateY(0deg) rotateX(10deg)}
+100%{transform:rotateY(360deg) rotateX(10deg)}
 }
 
 /* videos */
 
 .section{
-padding:90px 10%;
+padding:80px 10%;
 text-align:center;
-}
-
-.section h2{
-margin-bottom:40px;
 }
 
 .videos{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
+gap:20px;
 }
 
 .video-card{
@@ -113,24 +110,15 @@ iframe{
 width:100%;
 height:200px;
 border:none;
-border-radius:10px;
+border-radius:8px;
 }
 
-/* subscriber goal */
+/* subscriber counter */
 
-.goal-container{
-width:100%;
-max-width:500px;
-margin:auto;
-background:#111;
-border-radius:30px;
-overflow:hidden;
-}
-
-.goal-bar{
-height:25px;
-background:linear-gradient(90deg,#ff003c,#00e5ff);
-width:0%;
+.counter{
+margin-top:20px;
+font-size:30px;
+color:#00e5ff;
 }
 
 /* aim trainer */
@@ -139,15 +127,15 @@ width:0%;
 width:100%;
 max-width:500px;
 height:350px;
-margin:auto;
+margin:30px auto;
 background:#111;
 position:relative;
 border-radius:12px;
 }
 
 .target{
-width:50px;
-height:50px;
+width:45px;
+height:45px;
 background:red;
 border-radius:50%;
 position:absolute;
@@ -160,25 +148,12 @@ text-align:center;
 opacity:.6;
 }
 
-/* canvas background */
-
-#bgCanvas{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-2;
-}
-
 </style>
-
 </head>
 
 <body>
 
-<canvas id="bgCanvas"></canvas>
-<div id="glow"></div>
+<canvas id="trailCanvas"></canvas>
 
 <header>
 
@@ -187,7 +162,7 @@ z-index:-2;
 <nav>
 <a href="#">Home</a>
 <a href="#videos">Videos</a>
-<a href="#goal">Goal</a>
+<a href="#stats">Stats</a>
 <a href="#game">Aim Trainer</a>
 </nav>
 
@@ -197,11 +172,30 @@ z-index:-2;
 
 <h1>DOMINATE THE <span>FPS</span></h1>
 
-<p>Clutch plays. Elite aim. Pro gameplay.</p>
+<p>Elite aim • insane reflexes • clutch gameplay</p>
 
-<a class="btn" href="https://youtube.com/@kamalfps" target="_blank">
-SUBSCRIBE
-</a>
+<div class="controller">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Gamepad.svg">
+</div>
+
+<a href="https://youtube.com/@kamalfps" style="
+padding:16px 36px;
+background:#ff003c;
+border-radius:30px;
+text-decoration:none;
+color:white;
+display:inline-block;
+">SUBSCRIBE</a>
+
+</section>
+
+<section class="section" id="stats">
+
+<h2>LIVE SUBSCRIBERS</h2>
+
+<div class="counter">
+<img src="https://socialcounts.org/youtube-live-subscriber-count/kamalfps/embed" width="300">
+</div>
 
 </section>
 
@@ -209,29 +203,15 @@ SUBSCRIBE
 
 <h2>LATEST UPLOADS</h2>
 
-<div class="videos" id="videoContainer">
-Loading videos...
+<div id="videoContainer" class="videos">
+Loading...
 </div>
-
-</section>
-
-<section class="section" id="goal">
-
-<h2>SUBSCRIBER GOAL</h2>
-
-<div class="goal-container">
-<div class="goal-bar" id="goalBar"></div>
-</div>
-
-<p id="goalText" style="margin-top:15px"></p>
 
 </section>
 
 <section class="section" id="game">
 
 <h2>FPS AIM TRAINER</h2>
-
-<p>Click the red targets!</p>
 
 <div id="gameArea"></div>
 
@@ -247,107 +227,93 @@ Loading videos...
 
 <script>
 
-/* RGB glow follow mouse */
+/* mouse particle trail */
+
+const canvas=document.getElementById("trailCanvas")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
 
 document.addEventListener("mousemove",e=>{
-const glow=document.getElementById("glow");
-glow.style.left=e.clientX-300+"px";
-glow.style.top=e.clientY-300+"px";
-});
+particles.push({x:e.clientX,y:e.clientY,size:6})
+})
 
-/* 3D particle background */
+function animateTrail(){
 
-const canvas=document.getElementById("bgCanvas");
-const ctx=canvas.getContext("2d");
+ctx.clearRect(0,0,canvas.width,canvas.height)
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+particles.forEach((p,i)=>{
 
-let particles=[];
+ctx.fillStyle="rgba(0,229,255,0.7)"
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
+ctx.fill()
 
-for(let i=0;i<120;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*2,
-speed:Math.random()*1
-});
+p.size-=0.2
+
+if(p.size<=0)particles.splice(i,1)
+
+})
+
+requestAnimationFrame(animateTrail)
 }
 
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
+animateTrail()
 
-particles.forEach(p=>{
-p.y+=p.speed;
-
-if(p.y>canvas.height)p.y=0;
-
-ctx.fillStyle="#00e5ff";
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-ctx.fill();
-});
-
-requestAnimationFrame(animate);
-}
-
-animate();
-
-/* load youtube videos */
+/* fetch youtube videos */
 
 fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UC")
 .then(res=>res.json())
 .then(data=>{
-const container=document.getElementById("videoContainer");
-container.innerHTML="";
+
+const container=document.getElementById("videoContainer")
+container.innerHTML=""
 
 data.items.slice(0,3).forEach(video=>{
-const id=video.link.split("v=")[1];
+
+const id=video.link.split("v=")[1]
 
 container.innerHTML+=`
 <div class="video-card">
 <iframe src="https://www.youtube.com/embed/${id}"></iframe>
 </div>
-`;
-});
-});
+`
 
-/* subscriber goal */
+})
 
-let subs=630; // change manually
-let goal=1000;
+})
 
-let percent=(subs/goal)*100;
+/* aim trainer */
 
-document.getElementById("goalBar").style.width=percent+"%";
+let score=0
+const gameArea=document.getElementById("gameArea")
 
-document.getElementById("goalText").innerText=
-subs+" / "+goal+" Subscribers";
+function spawn(){
 
-/* FPS aim trainer */
+const target=document.createElement("div")
+target.className="target"
 
-let score=0;
-const gameArea=document.getElementById("gameArea");
-
-function spawnTarget(){
-
-const target=document.createElement("div");
-target.className="target";
-
-target.style.left=Math.random()*450+"px";
-target.style.top=Math.random()*300+"px";
+target.style.left=Math.random()*450+"px"
+target.style.top=Math.random()*300+"px"
 
 target.onclick=()=>{
-score++;
-document.getElementById("score").innerText=score;
-target.remove();
-spawnTarget();
-};
 
-gameArea.appendChild(target);
+score++
+document.getElementById("score").innerText=score
+target.remove()
+
+spawn()
+
 }
 
-spawnTarget();
+gameArea.appendChild(target)
+
+}
+
+spawn()
 
 </script>
 
