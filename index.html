@@ -175,7 +175,7 @@ opacity:.6;
 <p>Elite aim • insane reflexes • clutch gameplay</p>
 
 <div class="controller">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Gamepad.svg">
+<img src="<img src="https://cdn-icons-png.flaticon.com/512/686/686589.png">">
 </div>
 
 <a href="https://youtube.com/@kamalfps" style="
@@ -193,9 +193,12 @@ display:inline-block;
 
 <h2>LIVE SUBSCRIBERS</h2>
 
-<div class="counter">
-<img src="https://socialcounts.org/youtube-live-subscriber-count/kamalfps/embed" width="300">
-</div>
+<iframe
+src="https://socialcounts.org/youtube-live-subscriber-count/kamalfps/embed"
+width="320"
+height="120"
+frameborder="0">
+</iframe>
 
 </section>
 
@@ -265,7 +268,7 @@ animateTrail()
 
 /* fetch youtube videos */
 
-fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UC")
+fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UCp1M9YZk-p90")
 .then(res=>res.json())
 .then(data=>{
 
@@ -278,7 +281,7 @@ const id=video.link.split("v=")[1]
 
 container.innerHTML+=`
 <div class="video-card">
-<iframe src="https://www.youtube.com/embed/${id}"></iframe>
+<iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe>
 </div>
 `
 
