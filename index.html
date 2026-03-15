@@ -5,17 +5,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KamalFPS</title>
+<title>KamalFPS Gaming</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
 font-family:'Orbitron',sans-serif;
@@ -24,23 +20,17 @@ color:white;
 overflow-x:hidden;
 }
 
-/* animated RGB glow */
+/* RGB glow following mouse */
 
-body::before{
-content:"";
+#glow{
 position:fixed;
-width:900px;
-height:900px;
-background:linear-gradient(45deg,#ff003c,#7b2cff,#00e5ff,#00ff9c);
-filter:blur(220px);
-opacity:.4;
-animation:moveGlow 15s infinite alternate ease-in-out;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#ff003c,#7b2cff,#00e5ff);
+filter:blur(180px);
+pointer-events:none;
 z-index:-1;
-}
-
-@keyframes moveGlow{
-0%{transform:translate(-250px,-150px)}
-100%{transform:translate(250px,250px)}
+opacity:.4;
 }
 
 /* header */
@@ -50,164 +40,135 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:25px 8%;
-background:rgba(10,10,15,.7);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,.05);
+background:#0c0c14;
 }
 
 .logo{
-font-size:28px;
-font-weight:800;
+font-size:26px;
 color:#ff003c;
-letter-spacing:3px;
+font-weight:bold;
 }
 
 nav a{
-margin-left:30px;
+margin-left:25px;
 text-decoration:none;
 color:white;
-font-size:14px;
 opacity:.8;
-}
-
-nav a:hover{
-color:#00e5ff;
 }
 
 /* hero */
 
 .hero{
 text-align:center;
-padding:150px 20px;
+padding:140px 20px;
 }
 
 .hero h1{
-font-size:70px;
+font-size:64px;
 margin-bottom:20px;
 }
 
 .hero span{
-background:linear-gradient(90deg,#ff003c,#00e5ff);
--webkit-background-clip:text;
-color:transparent;
+color:#00e5ff;
 }
 
 .hero p{
 opacity:.7;
-font-size:20px;
-margin-bottom:40px;
+margin-bottom:30px;
 }
 
 .btn{
-display:inline-block;
-padding:18px 40px;
-background:linear-gradient(90deg,#ff003c,#ff4d6d);
-border-radius:50px;
-text-decoration:none;
+padding:16px 36px;
+border-radius:40px;
+background:#ff003c;
 color:white;
-font-size:15px;
-box-shadow:0 0 35px rgba(255,0,60,.8);
-transition:.3s;
-}
-
-.btn:hover{
-transform:scale(1.1);
-}
-
-/* section */
-
-.section{
-padding:110px 10%;
-text-align:center;
-}
-
-.section h2{
-font-size:40px;
-margin-bottom:50px;
+text-decoration:none;
+display:inline-block;
 }
 
 /* videos */
 
+.section{
+padding:90px 10%;
+text-align:center;
+}
+
+.section h2{
+margin-bottom:40px;
+}
+
 .videos{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
+gap:25px;
 }
 
 .video-card{
-background:#0e0e16;
-padding:12px;
-border-radius:12px;
-transition:.3s;
-}
-
-.video-card:hover{
-transform:translateY(-8px);
+background:#0f0f18;
+padding:10px;
+border-radius:10px;
 }
 
 iframe{
 width:100%;
-height:210px;
+height:200px;
 border:none;
 border-radius:10px;
 }
 
-/* stats */
+/* subscriber goal */
 
-.stats{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:60px;
+.goal-container{
+width:100%;
+max-width:500px;
+margin:auto;
+background:#111;
+border-radius:30px;
+overflow:hidden;
 }
 
-.stat{
-background:#0f0f18;
-padding:35px 45px;
-border-radius:18px;
+.goal-bar{
+height:25px;
+background:linear-gradient(90deg,#ff003c,#00e5ff);
+width:0%;
 }
 
-.stat h3{
-font-size:32px;
-color:#ff003c;
+/* aim trainer */
+
+#gameArea{
+width:100%;
+max-width:500px;
+height:350px;
+margin:auto;
+background:#111;
+position:relative;
+border-radius:12px;
 }
 
-.stat p{
-font-size:12px;
-opacity:.7;
-}
-
-/* setup */
-
-.setup{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.card{
-background:#0c0c14;
-padding:30px;
-border-radius:16px;
-}
-
-.card h4{
-color:#00e5ff;
-margin-bottom:10px;
-}
-
-/* subscribe section */
-
-.subscribe-section{
-background:linear-gradient(135deg,#0f0f18,#1a0d2a);
+.target{
+width:50px;
+height:50px;
+background:red;
+border-radius:50%;
+position:absolute;
+cursor:pointer;
 }
 
 footer{
-padding:50px;
+padding:40px;
 text-align:center;
-font-size:13px;
 opacity:.6;
+}
+
+/* canvas background */
+
+#bgCanvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
 }
 
 </style>
@@ -216,6 +177,9 @@ opacity:.6;
 
 <body>
 
+<canvas id="bgCanvas"></canvas>
+<div id="glow"></div>
+
 <header>
 
 <div class="logo">KAMALFPS</div>
@@ -223,9 +187,8 @@ opacity:.6;
 <nav>
 <a href="#">Home</a>
 <a href="#videos">Videos</a>
-<a href="#stats">Stats</a>
-<a href="#setup">Setup</a>
-<a href="#subscribe">Subscribe</a>
+<a href="#goal">Goal</a>
+<a href="#game">Aim Trainer</a>
 </nav>
 
 </header>
@@ -234,112 +197,159 @@ opacity:.6;
 
 <h1>DOMINATE THE <span>FPS</span></h1>
 
-<p>Elite aim. Insane reflexes. Legendary clutch plays.</p>
+<p>Clutch plays. Elite aim. Pro gameplay.</p>
 
-<a class="btn" href="https://youtube.com/@kamalfps" target="_blank">SUBSCRIBE</a>
+<a class="btn" href="https://youtube.com/@kamalfps" target="_blank">
+SUBSCRIBE
+</a>
 
 </section>
 
 <section class="section" id="videos">
 
-<h2>LATEST GAMEPLAY</h2>
+<h2>LATEST UPLOADS</h2>
 
-<div class="videos">
-
-<div class="video-card">
-<iframe src="https://www.youtube.com/embed/8GZKqNdL5uI"></iframe>
-</div>
-
-<div class="video-card">
-<iframe src="https://www.youtube.com/embed/LMbZzNkDBgA"></iframe>
-</div>
-
-<div class="video-card">
-<iframe src="https://www.youtube.com/embed/X1M9YZk-p90"></iframe>
-</div>
-
+<div class="videos" id="videoContainer">
+Loading videos...
 </div>
 
 </section>
 
-<section class="section" id="stats">
+<section class="section" id="goal">
 
-<h2>PLAYER PERFORMANCE</h2>
+<h2>SUBSCRIBER GOAL</h2>
 
-<div class="stats">
-
-<div class="stat">
-<h3>FPS</h3>
-<p>HIGH INTENSITY GAMEPLAY</p>
+<div class="goal-container">
+<div class="goal-bar" id="goalBar"></div>
 </div>
 
-<div class="stat">
-<h3>CLUTCH</h3>
-<p>EPIC MOMENTS</p>
-</div>
-
-<div class="stat">
-<h3>PRO</h3>
-<p>COMPETITIVE SKILL</p>
-</div>
-
-</div>
+<p id="goalText" style="margin-top:15px"></p>
 
 </section>
 
-<section class="section" id="setup">
+<section class="section" id="game">
 
-<h2>GAMING SETUP</h2>
+<h2>FPS AIM TRAINER</h2>
 
-<div class="setup">
+<p>Click the red targets!</p>
 
-<div class="card">
-<h4>Mouse</h4>
-<p>High precision gaming mouse</p>
-</div>
+<div id="gameArea"></div>
 
-<div class="card">
-<h4>Keyboard</h4>
-<p>Mechanical RGB keyboard</p>
-</div>
-
-<div class="card">
-<h4>Headset</h4>
-<p>Surround sound gaming headset</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section subscribe-section" id="subscribe">
-
-<h2>JOIN THE SQUAD</h2>
-
-<div style="margin:30px 0">
-
-<img 
-src="https://socialcounts.org/youtube-live-subscriber-count/kamalfps/embed"
-width="320"
-height="120"
-style="border-radius:10px;border:none;"
->
-
-</div>
-
-<p style="opacity:.7;margin-bottom:35px">
-Subscribe to @kamalfps and watch insane gaming moments.
-</p>
-
-<a class="btn" href="https://youtube.com/@kamalfps" target="_blank">SUBSCRIBE NOW</a>
+<p>Score: <span id="score">0</span></p>
 
 </section>
 
 <footer>
 
-© 2026 KamalFPS • Ultra Pro Gaming Website
+© 2026 KamalFPS
 
 </footer>
+
+<script>
+
+/* RGB glow follow mouse */
+
+document.addEventListener("mousemove",e=>{
+const glow=document.getElementById("glow");
+glow.style.left=e.clientX-300+"px";
+glow.style.top=e.clientY-300+"px";
+});
+
+/* 3D particle background */
+
+const canvas=document.getElementById("bgCanvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<120;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2,
+speed:Math.random()*1
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.y+=p.speed;
+
+if(p.y>canvas.height)p.y=0;
+
+ctx.fillStyle="#00e5ff";
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fill();
+});
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+/* load youtube videos */
+
+fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UC")
+.then(res=>res.json())
+.then(data=>{
+const container=document.getElementById("videoContainer");
+container.innerHTML="";
+
+data.items.slice(0,3).forEach(video=>{
+const id=video.link.split("v=")[1];
+
+container.innerHTML+=`
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/${id}"></iframe>
+</div>
+`;
+});
+});
+
+/* subscriber goal */
+
+let subs=630; // change manually
+let goal=1000;
+
+let percent=(subs/goal)*100;
+
+document.getElementById("goalBar").style.width=percent+"%";
+
+document.getElementById("goalText").innerText=
+subs+" / "+goal+" Subscribers";
+
+/* FPS aim trainer */
+
+let score=0;
+const gameArea=document.getElementById("gameArea");
+
+function spawnTarget(){
+
+const target=document.createElement("div");
+target.className="target";
+
+target.style.left=Math.random()*450+"px";
+target.style.top=Math.random()*300+"px";
+
+target.onclick=()=>{
+score++;
+document.getElementById("score").innerText=score;
+target.remove();
+spawnTarget();
+};
+
+gameArea.appendChild(target);
+}
+
+spawnTarget();
+
+</script>
 
 </body>
 </html>
